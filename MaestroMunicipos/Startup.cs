@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using MaestroMunicipos.Model;
 //using static MaestroMunicipos.Model.Model;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MaestroMunicipos
 {
@@ -34,6 +35,11 @@ namespace MaestroMunicipos
             var connection = @"Server=DESKTOP-8KB1J6M\SQLEXPRESS;Database=MaestroMunicipios;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<MaestroMunicipiosContext>
                 (options => options.UseSqlServer(connection));
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "MaestroMunicipios", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +54,14 @@ namespace MaestroMunicipos
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MaestroMunicipios V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
