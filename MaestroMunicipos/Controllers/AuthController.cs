@@ -17,7 +17,7 @@ namespace MaestroMunicipos.Controllers
 {
     [EnableCors("MyPolicy")]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class AuthController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

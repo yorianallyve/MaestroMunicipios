@@ -15,7 +15,7 @@ namespace MaestroMunicipos.Controllers
 {
     [EnableCors("MyPolicy")]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class MunicipiosController : Controller
     {

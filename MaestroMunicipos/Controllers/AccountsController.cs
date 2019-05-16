@@ -14,7 +14,7 @@ namespace MaestroMunicipos.Controllers
 {
     [EnableCors("MyPolicy")]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class AccountsController : Controller
     {
         private readonly ApplicationDbContext _appDbContext;
