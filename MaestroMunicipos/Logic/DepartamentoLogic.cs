@@ -51,5 +51,36 @@ namespace MaestroMunicipos.Logic
             return lstdepto;
         }
         #endregion
+
+
+        #region Search Departamento for PaisId
+        public List<DepartamentoBE> SearchDepartamentoByPaisId(int SEARIDPAIS)
+        {
+            List<DepartamentoBE> Departamento = new List<DepartamentoBE>();
+            try
+            {
+                Departamento = (from departamento in _appDbContext.Departamento
+                               where departamento.PaisId == SEARIDPAIS
+                               select new DepartamentoBE
+                               {
+                                   DepartamentoId = departamento.DepartamentoId,
+                                   Nombre = departamento.Nombre,
+                                   PaisId = departamento.PaisId,
+                                   NombrePais = departamento.Pais.Nombre,
+                               }).ToList();
+            }
+            catch (Exception EX)
+            {
+
+            }
+            finally
+            {
+                _appDbContext.Dispose();
+            }
+
+            return Departamento;
+        }
+
+        #endregion
     }
 }

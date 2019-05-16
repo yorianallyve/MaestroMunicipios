@@ -40,5 +40,17 @@ namespace MaestroMunicipos.Controllers
             return lstdepto;
         }
         #endregion
+
+
+        #region  SearchDepartamentoByPaisId All 
+        [HttpGet("[action]/{SEARIDPAIS}")]
+        public List<DepartamentoBE> SearchDepartamentoByPaisId(int SEARIDPAIS)
+        {
+            List<DepartamentoBE> lstdepto = new List<DepartamentoBE>();
+            DepartamentoLogic DL = new DepartamentoLogic(_userManager, _mapper, _appDbContext);
+            lstdepto = DL.SearchDepartamentoByPaisId(SEARIDPAIS);
+            return lstdepto;
+        }
+        #endregion
     }
 }
