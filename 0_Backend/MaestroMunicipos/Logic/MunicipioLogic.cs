@@ -48,7 +48,7 @@ namespace MaestroMunicipos.Logic
                 else
                 {
                     AR.CodeError = 2;
-                    AR.DescriptionError = "El producto ya existe, por favor verifique la información";
+                    AR.DescriptionError = "El municipio ya existe, por favor verifique la información";
                 }
             }
             catch (Exception EX)
