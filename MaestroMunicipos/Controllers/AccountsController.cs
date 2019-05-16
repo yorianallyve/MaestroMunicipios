@@ -6,11 +6,14 @@ using AutoMapper;
 using MaestroMunicipos.Helpers;
 using MaestroMunicipos.Model;
 using MaestroMunicipos.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaestroMunicipos.Controllers
 {
+    [EnableCors("MyPolicy")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     public class AccountsController : Controller
     {

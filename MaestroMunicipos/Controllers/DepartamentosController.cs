@@ -6,13 +6,15 @@ using AutoMapper;
 using MaestroMunicipos.Dtos;
 using MaestroMunicipos.Logic;
 using MaestroMunicipos.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaestroMunicipos.Controllers
 {
-
+    [EnableCors("MyPolicy")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class DepartamentosController : Controller
