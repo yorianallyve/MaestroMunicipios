@@ -155,7 +155,7 @@ namespace MaestroMunicipos.Logic
                                NombreDepto = Municipio.Departamento.Nombre,
                                PaisId = Municipio.Departamento.PaisId,
                                NombrePais = Municipio.Departamento.Pais.Nombre,
-                           }).OrderBy(x => x.MunicipioId).ThenBy(x => x.DepartamentoId).ToList();
+                           }).OrderBy(x => x.Nombre).ThenBy(x => x.NombreDepto).ToList();
             }
             catch (Exception EX)
             {
