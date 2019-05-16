@@ -172,13 +172,13 @@ namespace MaestroMunicipos.Logic
 
 
         #region Delete Municipio
-        public AnswerResponseBE DeleteMunicipio(MunicipioBE DELEMUNI)
+        public AnswerResponseBE DeleteMunicipio(int id)
         {
             AnswerResponseBE AR = new AnswerResponseBE();
             try
             {
                 Municipio municipio = new Municipio();
-                municipio = _appDbContext.Municipio.Where(x => x.MunicipioId == DELEMUNI.MunicipioId).FirstOrDefault();
+                municipio = _appDbContext.Municipio.Where(x => x.MunicipioId == id).FirstOrDefault();
                 if (municipio != null)
                 {
                     _appDbContext.Remove(municipio);

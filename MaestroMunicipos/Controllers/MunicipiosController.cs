@@ -78,12 +78,12 @@ namespace MaestroMunicipos.Controllers
 
 
         #region Delete Municipio
-        [HttpDelete("[action]")]
-        public AnswerResponseBE DeleteMunicipio([FromBody]MunicipioBE DELEMUNI)
+        [HttpDelete("[action]/{id}")]
+        public AnswerResponseBE DeleteMunicipio(int id)
         {
             AnswerResponseBE AR = new AnswerResponseBE();
             MunicipioLogic ML = new MunicipioLogic(_userManager, _mapper, _appDbContext);
-            AR = ML.DeleteMunicipio(DELEMUNI);
+            AR = ML.DeleteMunicipio(id);
             return AR;
         }
         #endregion
