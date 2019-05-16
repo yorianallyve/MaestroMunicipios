@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,16 @@ using System.Threading.Tasks;
 namespace MaestroMunicipos.Model
 {
 
-    public class MaestroMunicipiosContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
-        public MaestroMunicipiosContext(DbContextOptions<MaestroMunicipiosContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         { }
 
         public DbSet<Municipio> Municipio { get; set; }
         public DbSet<Departamento> Departamento { get; set; }
         public DbSet<Pais> Pais { get; set; }
-
+        public DbSet<UserInformation> UserInformation { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,6 +59,12 @@ namespace MaestroMunicipos.Model
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(150);
+            });
+
+
+            modelBuilder.Entity<UserInformation>(entity =>
+            {
+                entity.HasKey(l => new { l.LoginProvider, l.ProviderKey });
             });
         }
     }
