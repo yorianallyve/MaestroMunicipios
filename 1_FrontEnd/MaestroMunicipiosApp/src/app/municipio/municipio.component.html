@@ -1,0 +1,133 @@
+<h1>Municipio</h1>
+
+<div class="form-row">
+
+  <div class="form-group col-md-1">
+    <label for="inputId">Id </label>
+    <input type="number" class="form-control" id="inputId" [(ngModel)]="municipios.MunicipioId">
+  </div>
+
+
+  <div class="form-group col-md-3">
+    <label for="inputNombre">Nombre Municipio</label>
+    <input type="text" class="form-control" id="inputNombre" [(ngModel)]="municipios.Nombre">
+  </div>
+
+
+  <div class="form-group col-md-3">
+    <label for="inputPais">Pais</label>
+    <select id="inputPais" class="form-control" [(ngModel)]="municipios.PaisId" (ngModelChange)="onChangePais($event)">
+      <option selected>Seleccione</option>
+      <option *ngFor="let pais of ltspaises" [value]="pais.PaisId">{{pais.Nombre}}
+      </option>
+    </select>
+  </div>
+
+
+  <div class="form-group col-md-3">
+    <label for="inputDepartamento">Departamento</label>
+    <select id="inputDepartamento" class="form-control" [(ngModel)]="municipios.DepartamentoId">
+      <option selected>Seleccione</option>
+      <option *ngFor="let departamento of ltsdepartamentos" [value]="departamento.DepartamentoId">
+        {{departamento.Nombre}}
+      </option>
+    </select>
+  </div>
+
+
+
+  <div class="form-group col-md-1 ">
+    <button type="button " (click)="onClickInsertMunicipio() " class="btn btn-primary ">Guardar</button>
+  </div>
+</div>
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col ">PAIS</th>
+      <th scope="col ">DEPARTAMENTO</th>
+      <th scope="col ">ID MUNICIPIO</th>
+      <th scope="col ">NOMBRE MUNICIPIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let municipio of ltsmunicipios; index as i;">
+      <td>{{municipio.NombrePais}}</td>
+      <td>{{municipio.NombreDepto}}</td>
+      <td>{{municipio.MunicipioId}}</td>
+      <td>{{municipio.Nombre}}</td>
+      <button type="button " (click)="onClickDeteleMunicipio(municipio.MunicipioId) "
+        class="btn btn-danger ">Eliminar</button>
+      <button class="btn btn-primary mb-2 mr-2" (click)="onClickEditarMunicipio(content, municipio)">Editar</button>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+<p *ngIf="NotificationStatus ">
+  <ngb-alert [type]="TypeNotification " (close)="closeAlert() ">{{ TextNotification }}</ngb-alert>
+</p>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Editar Municipio</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-row">
+
+      <div class="form-group col-md-1">
+        <label for="inputId">Id </label>
+        <input type="number" class="form-control" id="inputId" [(ngModel)]="tempmunicipios.MunicipioId">
+      </div>
+
+
+      <div class="form-group col-md-3">
+        <label for="inputNombre">Nombre Municipio</label>
+        <input type="text" class="form-control" id="inputNombre" [(ngModel)]="tempmunicipios.Nombre">
+      </div>
+
+
+      <div class="form-group col-md-3">
+        <label for="inputPais">Pais</label>
+        <select id="inputPais" class="form-control" [(ngModel)]="tempmunicipios.PaisId"
+          (ngModelChange)="onChangePaisTem($event)">
+          <option selected>Seleccione</option>
+          <option *ngFor="let pais of ltspaises" [value]="pais.PaisId">{{pais.Nombre}}
+          </option>
+        </select>
+      </div>
+
+
+      <div class="form-group col-md-3">
+        <label for="inputDepartamento">Departamento</label>
+        <select id="inputDepartamento" class="form-control" [(ngModel)]="tempmunicipios.DepartamentoId">
+          <option selected>Seleccione</option>
+          <option *ngFor="let departamentos of ltstempdepartamentos" [value]="departamentos.DepartamentoId">
+            {{departamentos.Nombre}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-1 ">
+        <button type="button " (click)="onClickUpdateMunicipio() " class="btn btn-primary ">Guardar</button>
+      </div>
+
+    </div>
+
+    <p *ngIf="ModalNotificationStatus ">
+        <ngb-alert [type]="ModalTypeNotification " (close)="closeAlertModal() ">{{ ModalTextNotification }}</ngb-alert>
+      </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cerrar</button>
+  </div>
+</ng-template>
