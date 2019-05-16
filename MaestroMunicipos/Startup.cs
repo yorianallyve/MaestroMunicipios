@@ -27,6 +27,7 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using MaestroMunicipos.Extensions;
+using Newtonsoft.Json.Serialization;
 
 namespace MaestroMunicipos
 {
@@ -45,7 +46,10 @@ namespace MaestroMunicipos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc()
+        .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             //var connection = @"Server=DESKTOP-8KB1J6M\SQLEXPRESS;Database=MaestroMunicipios;Trusted_Connection=True;ConnectRetryCount=0";
             //services.AddDbContext<ApplicationDbContext>
