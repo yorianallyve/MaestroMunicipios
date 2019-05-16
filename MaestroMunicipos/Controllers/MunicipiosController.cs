@@ -71,8 +71,19 @@ namespace MaestroMunicipos.Controllers
             ltsmunall = ML.GetMunicipioAll();
             return ltsmunall;
         }
-        #endregion 
+        #endregion
 
+
+        #region Delete Municipio
+        [HttpDelete("[action]")]
+        public AnswerResponseBE DeleteMunicipio([FromBody]MunicipioBE DELEMUNI)
+        {
+            AnswerResponseBE AR = new AnswerResponseBE();
+            MunicipioLogic ML = new MunicipioLogic(_userManager, _mapper, _appDbContext);
+            AR = ML.DeleteMunicipio(DELEMUNI);
+            return AR;
+        }
+        #endregion
 
     }
 }

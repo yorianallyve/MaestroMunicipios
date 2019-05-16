@@ -169,5 +169,41 @@ namespace MaestroMunicipos.Logic
             return lstmuni;
         }
         #endregion
+
+
+        #region Delete Municipio
+        public AnswerResponseBE DeleteMunicipio(MunicipioBE DELEMUNI)
+        {
+            AnswerResponseBE AR = new AnswerResponseBE();
+            try
+            {
+                Municipio municipio = new Municipio();
+                municipio = _appDbContext.Municipio.Where(x => x.MunicipioId == DELEMUNI.MunicipioId).FirstOrDefault();
+                if (municipio != null)
+                {
+                    _appDbContext.Remove(municipio);
+                    _appDbContext.SaveChanges();
+
+                    AR.CodeError = 0;
+                    AR.DescriptionError = "Se ha eliminado el municipio correctamente";
+                }
+                else
+                {
+                    AR.CodeError = 2;
+                    AR.DescriptionError = "El registro no existe, por favor verifique la información";
+                }
+            }
+            catch (Exception EX)
+            {
+                AR.CodeError = 1;
+                AR.DescriptionError = "Hubo un error";
+            }
+            finally
+            {
+                _appDbContext.Dispose();
+            }
+            return AR;
+        }
+        #endregion
     }
 }
