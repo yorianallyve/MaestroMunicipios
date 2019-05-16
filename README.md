@@ -2,7 +2,14 @@
 
 Prueba presentada con .NetCore 2.2, Angular7, bootstrap4 para angular y code first
 
-Nota
+Nota: Para poder ejecutar esta aplicación deberá: 
+1. Actualizar la cadena de conexión en appsettings.json.
+2. Debe restaurar los paquetes de NuGet. 
+3. Compilar para verificar que todo este ok. 
+4. Correr con anterioridad los siguientes comandos en su consola: dotnet ef database update.
+5. Después  de los pasos anteriores se deben crear manualmente los países  y departamentos, teniendo en cuenta que
+debe crear primero los países y luego los departamentos.
+ 
 
 ![Step1](https://raw.githubusercontent.com/yorianallyve/MaestroMunicipios/master/2_Evidencia/1.png)
 No se dividio en capas pero si se separó la funcionalidad en diferentes carpetas.
@@ -32,5 +39,6 @@ Al darle click en el botón editar este le abrirá un modal donde usted prodrá 
 tabla anterior.
 
 ![Step8](https://raw.githubusercontent.com/yorianallyve/MaestroMunicipios/master/2_Evidencia/8.png)
+
 Al terminar de editar debe darle click en el boton guardar y le saldra el mensaje que le muestra en la imagen.
 
