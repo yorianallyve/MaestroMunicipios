@@ -22,6 +22,8 @@ namespace MaestroMunicipos.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Departamento>(entity =>
             {
                 entity.Property(e => e.DepartamentoId).ValueGeneratedNever();
@@ -60,12 +62,7 @@ namespace MaestroMunicipos.Model
                     .IsRequired()
                     .HasMaxLength(150);
             });
-
-
-            modelBuilder.Entity<UserInformation>(entity =>
-            {
-                entity.HasKey(l => new { l.LoginProvider, l.ProviderKey });
-            });
+                                  
         }
     }
 }
